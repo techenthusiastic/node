@@ -4,7 +4,7 @@
   "description": "hellodescript",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon examServer.js"
+    "start": "node index.js"
   },
   "env": {
     "NODE_ENV": "production"
