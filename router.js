@@ -17,7 +17,14 @@ empRoute.post("/", async (req, res, next) => {
 });
 //
 empRoute.get("/", async (req, res, next) => {
-	const data = await fs.readFile(fileName, "utf8");
+	let data = "";
+	try {
+		data = await fs.readFile(fileName, "utf8");
+	} catch (error) {
+		return res.send(
+			"<center>Employee Data-Base EMPTY.<br>Go-to Root Directory to create one........</center>"
+		);
+	}
 	if (data) {
 		let htmlStr = await fs.readFile("./public/showEMP/showEmp.html", "utf8");
 		htmlStr += data + "</pre> </body> </html>";
@@ -30,7 +37,14 @@ empRoute.get("/", async (req, res, next) => {
 //
 empRoute.get("/:id", async (req, res, next) => {
 	const ID = req.params.id;
-	const data = await fs.readFile(fileName, "utf8");
+	let data = "";
+	try {
+		data = await fs.readFile(fileName, "utf8");
+	} catch (error) {
+		return res.send(
+			"<center>Employee Data-Base EMPTY.<br>Go-to Root Directory to create one........</center>"
+		);
+	}
 	if (data) {
 		const foundAt = data.indexOf(`"id":"${ID}"`);
 		if (foundAt !== -1) {

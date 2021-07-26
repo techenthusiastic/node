@@ -4,7 +4,10 @@
   "description": "hellodescript",
   "main": "index.js",
   "scripts": {
-    "test": "npm start"
+    "start": "nodemon examServer.js"
+  },
+  "env": {
+    "NODE_ENV": "production"
   },
   "author": "Sachin Kumar",
   "license": "ISC",

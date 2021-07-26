@@ -10,7 +10,7 @@ form.addEventListener("submit", createEmp);
 async function createEmp(event) {
 	event.preventDefault();
 	showRes("Request Initiated.<br>Please wait.....");
-	const formData = new FormData(event.target);
+	const formData = new FormData(form);
 	const formBody = new URLSearchParams(formData).toString();
 	const promise = await fetch(e1_URL, {
 		method: "POST",
@@ -19,12 +19,13 @@ async function createEmp(event) {
 	});
 	const resp = await promise.text();
 	showRes(resp);
+	form.reset();
 }
 //
 const search = document.getElementById("inp5");
 const sForm = document.getElementById("search-form");
-sForm.addEventListener("submit", createEmp);
-async function createEmp(event) {
+sForm.addEventListener("submit", searchEmp);
+async function searchEmp(event) {
 	event.preventDefault();
 	const forID = search.value;
 	if (forID) window.open(`${e1_URL}/${forID}`, "_blank");
